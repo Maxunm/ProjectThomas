@@ -510,17 +510,6 @@ Wire Wire Line
 Wire Wire Line
 	7350 3750 7350 3800
 $Comp
-L Connector:Conn_01x03_Male J1
-U 1 1 5F34A5CB
-P 9600 1700
-F 0 "J1" H 9572 1632 50  0000 R CNN
-F 1 "Conn_01x03_Male" H 9572 1723 50  0000 R CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical" H 9600 1700 50  0001 C CNN
-F 3 "~" H 9600 1700 50  0001 C CNN
-	1    9600 1700
-	-1   0    0    1   
-$EndComp
-$Comp
 L power:VDD #PWR01
 U 1 1 5F34B15A
 P 9400 1600
@@ -583,14 +572,69 @@ Wire Wire Line
 Connection ~ 2850 1300
 Connection ~ 3150 1300
 $Comp
-L Connector:Conn_01x03_Female J?
-U 1 1 5F369F90
+L Connector:Conn_01x01_Female J4
+U 1 1 5F2CD6E3
+P 9600 2250
+F 0 "J4" H 9628 2276 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 9628 2185 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 9600 2250 50  0001 C CNN
+F 3 "~" H 9600 2250 50  0001 C CNN
+	1    9600 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J5
+U 1 1 5F2CE02B
 P 9600 2350
-F 0 "J?" H 9628 2376 50  0000 L CNN
-F 1 "Conn_01x03_Female" H 9628 2285 50  0000 L CNN
-F 2 "" H 9600 2350 50  0001 C CNN
+F 0 "J5" H 9628 2376 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 9628 2285 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 9600 2350 50  0001 C CNN
 F 3 "~" H 9600 2350 50  0001 C CNN
 	1    9600 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J6
+U 1 1 5F2CE722
+P 9600 2450
+F 0 "J6" H 9628 2476 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 9628 2385 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 9600 2450 50  0001 C CNN
+F 3 "~" H 9600 2450 50  0001 C CNN
+	1    9600 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J1
+U 1 1 5F2D4083
+P 9600 1600
+F 0 "J1" H 9628 1626 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 9628 1535 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 9600 1600 50  0001 C CNN
+F 3 "~" H 9600 1600 50  0001 C CNN
+	1    9600 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J2
+U 1 1 5F2D479E
+P 9600 1700
+F 0 "J2" H 9628 1726 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 9628 1635 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 9600 1700 50  0001 C CNN
+F 3 "~" H 9600 1700 50  0001 C CNN
+	1    9600 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J3
+U 1 1 5F2D4F0D
+P 9600 1800
+F 0 "J3" H 9628 1826 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 9628 1735 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 9600 1800 50  0001 C CNN
+F 3 "~" H 9600 1800 50  0001 C CNN
+	1    9600 1800
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
