@@ -1,4 +1,5 @@
 import json
+import random
 
 class Animation:
     def __init__(self):
@@ -44,9 +45,9 @@ class Panel:
 
 class LED:
     def __init__(self):
-        self.r = 0
-        self.g = 0
-        self.b = 0
+        self.r = random.randrange(0, 255)
+        self.g = random.randrange(0, 255)
+        self.b = random.randrange(0, 255)
 
     # def value(self):
     #     return self.r, self, g, self.b
