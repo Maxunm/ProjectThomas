@@ -49,15 +49,18 @@ def compressFileToString(inputFile):
         compressor.write(chunk)
 
 
-def merrickData(animation):
-    merfile = open('merrick.dat', 'wb')
+def saveAnimationData(animation, fileName):
+    datFile = open(fileName, 'wb')
     for l in range(0, len(animation.matrices)):
         for i in range(0, len(animation.matrices[0].panels)):
             for j in range(0, len(animation.matrices[0].panels[0].leds)):
-                merfile.write(animation.matrices[l].panels[i].leds[j].r.to_bytes(1, byteorder='big'))
-                merfile.write(animation.matrices[l].panels[i].leds[j].g.to_bytes(1, byteorder='big'))
-                merfile.write(animation.matrices[l].panels[i].leds[j].b.to_bytes(1, byteorder='big'))
-    merfile.close()
+                datFile.write(
+                    animation.matrices[l].panels[i].leds[j].r.to_bytes(1, byteorder='big'))
+                datFile.write(
+                    animation.matrices[l].panels[i].leds[j].g.to_bytes(1, byteorder='big'))
+                datFile.write(
+                    animation.matrices[l].panels[i].leds[j].b.to_bytes(1, byteorder='big'))
+    datFile.close()
 
 
 if __name__ == "__main__":
@@ -65,18 +68,9 @@ if __name__ == "__main__":
     # mainMatrix = Matrix()
     mainAnimation = Animation()
 
-    merrickData(mainAnimation)
-
-    file = open('matrix.json', 'w')
-
-    matrixJSONData = mainAnimation.toJSON()
-    file.write(matrixJSONData)
-    file.close()
-    with zipfile.ZipFile('matrix.zip', 'w', zipfile.ZIP_DEFLATED) as myzip:
-       # myzip.write('merrick.dat')
-        myzip.write('matrix.json')
-    with zipfile.ZipFile('matrixMer.zip', 'w', zipfile.ZIP_DEFLATED) as myzip:
-        myzip.write('merrick.dat')
+    saveAnimationData(mainAnimation, 'testAnimation.dat')
+    with zipfile.ZipFile('testAnimation.zip', 'w', zipfile.ZIP_DEFLATED) as myzip:
+        myzip.write('testAnimation.dat')
 
     # arr = bytearray(mainAnimation)
     # print(arr)
