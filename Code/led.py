@@ -10,14 +10,14 @@ def askQuestion():
     global matrixWith, matrixHeight
     while True:
         col = int(input("Column [0-" + str(matrixWith) + "]: "))
-        if col <= matrixWith and col >= 0:
+        if matrixWith >= col >= 0:
             break
         else:
             print("Column Number Must be Between 0 and " + str(matrixWith))
 
     while True:
         row = int(input("Row [0-" + str(matrixHeight) + "]: "))
-        if row <= matrixHeight and row >= 0:
+        if matrixHeight >= row >= 0:
             break
         else:
             print("Row Number Must be Between 0 and " + str(matrixHeight))
@@ -30,9 +30,9 @@ def getLedNumber(column, row):
     pcbNum = int(column / 2)
     colNum = column % 2
     if colNum == 0:
-        return ((matrixHeight - row) + (pcbNum * ((matrixHeight + 1) * 2)))
+        return (matrixHeight - row) + (pcbNum * ((matrixHeight + 1) * 2))
     else:
-        return (((matrixHeight + 1) + row) + (pcbNum * ((matrixHeight + 1) * 2)))
+        return ((matrixHeight + 1) + row) + (pcbNum * ((matrixHeight + 1) * 2))
 
 
 def compressFileToString(inputFile):
@@ -51,16 +51,28 @@ def compressFileToString(inputFile):
 
 def saveAnimationData(animation, fileName):
     datFile = open(fileName, 'wb')
-    for l in range(0, len(animation.matrices)):
-        for i in range(0, len(animation.matrices[0].panels)):
-            for j in range(0, len(animation.matrices[0].panels[0].leds)):
+    for l in range(0, len(animation.matrices)):  # Write whole animation
+        for i in range(0, len(animation.matrices[0].panels)):  # Write frame of animation
+            for j in range(0, len(animation.matrices[0].panels[0].leds)):  # Write data for individual panel
                 datFile.write(
-                    animation.matrices[l].panels[i].leds[j].r.to_bytes(1, byteorder='big'))
+                    animation.matrices[l].panels[i].leds[j].r.to_bytes(1, byteorder='big'))  # Write red value for led
                 datFile.write(
-                    animation.matrices[l].panels[i].leds[j].g.to_bytes(1, byteorder='big'))
+                    animation.matrices[l].panels[i].leds[j].g.to_bytes(1, byteorder='big'))  # Write green value for led
                 datFile.write(
-                    animation.matrices[l].panels[i].leds[j].b.to_bytes(1, byteorder='big'))
+                    animation.matrices[l].panels[i].leds[j].b.to_bytes(1, byteorder='big'))  # Write blue value for led
     datFile.close()
+
+
+def loadAnimationData(fileName):
+    datFile = open(fileName, 'rb')
+    retAnimation = Animation()
+    for i in range(0, len(retAnimation.matrices)):  # Read whole animation
+        for j in range(0, len(retAnimation.matrices[0].panels)):  # Read frame of animation
+            for k in range(0, len(retAnimation.matrices[0].panels[0].leds)):  # Read data for individual panel
+                retAnimation.matrices[i].panels[j].leds[k].r = datFile.read(1)  # Read red
+                retAnimation.matrices[i].panels[j].leds[k].g = datFile.read(1)  # Read green
+                retAnimation.matrices[i].panels[j].leds[k].b = datFile.read(1)  # Read blue
+    return retAnimation
 
 
 if __name__ == "__main__":
